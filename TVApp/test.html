@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>slideUp demo</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<style>
+    #popup {
+  position: absolute;
+  transform: translate(-50%, 0);
+  bottom: 24px;                   /* don't use top. Use bottom */
+  left:50%;
+  width: 300px;
+  height: 160px;
+  background:red;
+  display: none;
+}
+</style>
+<body>
+ 
+Click me!
+<div id="popup">Popup ou yeah</div>
+ 
+<script>
+$( document.body ).click(function() {
+    if($("#popup").is(":hidden")) {
+        var $popup = $("#popup");
+        $popup.slideDown();
+    } else {
+        var $popup = $("#popup");
+        $popup.slideUp();
+    }
+    
+});
+</script>
+ 
+</body>
+</html>

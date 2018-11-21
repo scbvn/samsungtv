@@ -1,4 +1,5 @@
 var client;
+var timeToHidePopup;
 
 var imageMapping = {
 		"mr.duy": "images/members/duy/Duy.jpg",
@@ -13,6 +14,9 @@ var imageMapping = {
 		"stranger": "images/members/unknow/firework.png"
 }
 
+var itemCount = 0;
+var pixelsToScroll = "50px";
+
 window.onload = function () {
     // TODO:: Do your initialization job
 
@@ -25,9 +29,55 @@ window.onload = function () {
 				
 			}
         }
-	    });
+      });
+      
+      $( document.body ).click(function() {
+        showHidePopup();
+        
+    });
+
+    initMqtt();
+
     
-    //mqtt
+};
+
+function showHidePopup() {
+  console.log("Show popup")
+  if($("#bg-text").is(":hidden")) {
+    var $popup = $("#bg-text");
+    $popup.slideDown();
+  } else {
+      var $popup = $("#bg-text");
+      $popup.slideUp();
+  }
+}
+
+function showPopup() {
+  console.log("Show popup")
+  if($("#bg-text").is(":hidden")) {
+    var $popup = $("#bg-text");
+    $popup.slideDown();
+  }
+}
+
+function hidePopup() {
+  if(!$("#bg-text").is(":hidden")) {
+    var $popup = $("#bg-text");
+    $popup.slideUp();
+  } 
+}
+
+function guid() {
+	  function s4() {
+	    return Math.floor((1 + Math.random()) * 0x10000)
+	      .toString(16)
+	      .substring(1);
+	  }
+	  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  }
+  
+function initMqtt() {
+  //mqtt
     // Create a client instance
     client = new Paho.MQTT.Client("192.168.1.31", 15675, "/ws", "clientId-" + guid());
 
@@ -49,9 +99,6 @@ window.onload = function () {
       console.log("onConnect");
       var textboxTemp = document.querySelector('#textbox');
       client.subscribe("test/detection");
-//      message = new Paho.MQTT.Message("Hello");
-//      message.destinationName = "World";
-//      client.send(message);
     }
 
     // called when the client loses its connection
@@ -65,9 +112,12 @@ window.onload = function () {
 
     // called when a message arrives
     function onMessageArrived(message) {
+      //clear timeout
+      window.clearTimeout();
+
       console.log("onMessageArrived:" + message.payloadString);
       
-      showPopup();
+      
       var visitor = message.payloadString;
       var box = document.querySelector('#textbox');
       box.innerHTML = visitor;
@@ -81,28 +131,25 @@ window.onload = function () {
 	  
 	  var audio = new Audio('sounds/ding-dong.wav');
 	  audio.volume = 0.7;
-	  audio.play();
-      
-//      if(message.payloadString.includes("Sum")) {
-//    	  avarta.src = "images/kisimita.jpg";
-//    	  avarta.style.display = 'block';
-//      } else {
-//    	  avarta.style.display = 'none';
-//      }
-    }
-    
-};
+    //audio.play();
+    window.setTimeout(showPopup, 500);
 
-function showPopup() {
-  $("#popup").show().animate({top: (window.innerHeight / 2 - 50) + "px"}, 1000);
+    //set timeout to hide panel
+    window.setTimeout(hidePopup, 20000);
+
+    }
 }
-function guid() {
-	  function s4() {
-	    return Math.floor((1 + Math.random()) * 0x10000)
-	      .toString(16)
-	      .substring(1);
-	  }
-	  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-	}
+
+function AddItem() {
+  itemCount++;
+  $('#slider-items').append("<li>item " + itemCount + "</li>");
+}
+
+function RemoveItem() {
+  $('#slider-items li').first().remove();
+  $('#slider-items').css('marginLeft', 0);
+}
+
+
 
 
