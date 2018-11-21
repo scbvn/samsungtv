@@ -1,3 +1,4 @@
+var client;
 
 window.onload = function () {
     // TODO:: Do your initialization job
@@ -15,10 +16,7 @@ window.onload = function () {
     
     //mqtt
     // Create a client instance
-    client = new Paho.MQTT.Client("192.168.1.31", 15675, "/ws", "clientId-12345");
-
-    console.log("client:" + client);
-    
+    client = new Paho.MQTT.Client("192.168.1.31", 15675, "/ws", "clientId-12345");    
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
@@ -51,6 +49,9 @@ window.onload = function () {
 
     // called when a message arrives
     function onMessageArrived(message) {
+      console.log("onMessageArrived:" + message.payloadString);
+      
+      showPopup();
       var visitor = message.payloadString;
       var box = document.querySelector('#textbox');
       box.innerHTML = visitor;
@@ -69,5 +70,9 @@ window.onload = function () {
     }
     
 };
+
+function showPopup() {
+  $("#popup").show().animate({top: (window.innerHeight / 2 - 50) + "px"}, 1000);
+}
 
 

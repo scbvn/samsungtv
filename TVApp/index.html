@@ -3,6 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/main.js"></script>
+<script src="jslib/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
 <style>
 body, html {
@@ -51,6 +52,16 @@ body, html {
     margin-right: auto;
     width: 40%;
 }
+
+.popup {
+	display: none;
+  width: 200px;
+  height: 100px;
+  position: fixed;
+  top: 100%;
+  left: calc(50% - 100px);
+  background-color:cyan;
+}
 </style>
 </head>
 <body>
@@ -63,6 +74,8 @@ body, html {
 		<img style="display: 'none'; max-width:'200px'" id="avarta" class="avarta_img" alt="Avatar">
 		<font size="9"><p id="submessage" style="display: 'none'"></p></font>
 	</div>
+
+	<div id="popup"></div>
 
 </body>
 </html>
