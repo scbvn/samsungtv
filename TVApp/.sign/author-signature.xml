@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>NCbK6XjyJ7HH07qs38tDsPOXCM8vdsLLvPuqzVLJzF0=</DigestValue>
+<DigestValue>/FvVD4J6+WwRPi8vfX4ge2L6vRa60ZHpi4aZaWU6NwE=</DigestValue>
 </Reference>
 <Reference URI="css%2Fstyle.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -21,6 +21,10 @@
 <Reference URI="images%2Fkisimita.jpg">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>S/Fea1vB0Wd6URBX4rgpn9t9KXFx85mkPmIL4l1xWiM=</DigestValue>
+</Reference>
+<Reference URI="images%2Fmembers%2Fbinh%2Fbinh.jpg">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>sVM/z8DamSpxcYCUKTFvBMFXijPIycg/nE/NFSGK62I=</DigestValue>
 </Reference>
 <Reference URI="images%2Fmembers%2Fduy%2FDuy.jpg">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -41,6 +45,14 @@
 <Reference URI="images%2Fmembers%2Fsang%2FSang.jpg">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>e3gcXrusu4Vd3Vlu48aax5z3NKIwEV3tsRnJwdxiUKM=</DigestValue>
+</Reference>
+<Reference URI="images%2Fmembers%2Fson%2FSon.jpg">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>MlmJy8ZeexW2HQ9SwlOf3KAsltIbzayrXWDYKouxTAQ=</DigestValue>
+</Reference>
+<Reference URI="images%2Fmembers%2Fsonpham%2FSonPham.jpg">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>IoQx3gL08LU7lPR/N7xhigZIQsOf+9owDyg/MXygpwk=</DigestValue>
 </Reference>
 <Reference URI="images%2Fmembers%2Fsum%2FSum.jpg">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -64,11 +76,15 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>fx/fgRHXk8kYahXd6ead//ekIse/ePW8UFpFF5OA20M=</DigestValue>
+<DigestValue>LrpUsmFlO0pW6B09kT1RXbqAyHy+UXMcWF8DbzS8yaA=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>2UZmcLeEgoUJ1ITKSR+rAUUMRKJQNwOL0lAxiazWTnQ=</DigestValue>
+<DigestValue>ObsqVz1Q8fduDm6+ydmEXt2hNZ7p9JTkY7VWN6HhJW4=</DigestValue>
+</Reference>
+<Reference URI="jslib%2Fjquery.min.js">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>4XbcjV2mJqKVlhxJX/AMZ6xt2SlWd0EPbiEVN9+zoeA=</DigestValue>
 </Reference>
 <Reference URI="sounds%2Fding-dong.wav">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -82,6 +98,10 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>rPvNjgB/xSlGZV698BAwMwDuo0o5zMIBMkUq9cifitc=</DigestValue>
 </Reference>
+<Reference URI="test.html">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>Vq3Wb6aW+tbc6rqsBUUWUfvCBW502vbDrdv0CceQUkU=</DigestValue>
+</Reference>
 <Reference URI="#prop">
 <Transforms>
 <Transform Algorithm="http://www.w3.org/2006/12/xml-c14n11"></Transform>
@@ -91,11 +111,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-aEA9vaLMNYqoGXaLNL05ffRNcimvDfOERZNRHYqnCWaUYac0Fs6z7Zk/wV9FtZzenVZyU2EMjEnu
-XVw9NfZbOFnGPQFbaUfYsUBXX+N1p+YZFOevwfoW69UMpvrSD52W09++alGbNSZ+PKSw5B58niWW
-Lqtr5zcEWA25dcJU+t3JV8x2Rd3a4bMlFliwlCJLPsDynwmlGWZn6/yaVw+GjSA+kzgXvStkkJjU
-PVg++4rF0ijAQ4Y9SQPVLhinBvoy/AsHDUa6D/7Ggqa0jyOuntPkmbXIAYoARuWVzLHgnVkkQL5C
-nON4IF4AkPzZl/HvZQH0Aw45xcNAw2kgay8UGQ==
+iR9Rp5SoLEEnQ5PEowRyUQ/aKTqkGiU6E+VPId0VIAcCPQTOJ4OVDDZSmuceP+wuT92F2Kj/Owl/
++x6JA6QrSsjYqGg08yMvhGfu+o+SNlUPeZMjarOAqwlE9tkEGWhU+M1Hcj75QgldYL/8WcXA1Mmx
+xO71HO+1GYMuDErI0qgKK1cA9A9W9JJbK97cSazoMClII3xhdUuOPRiVnS+3sOGc8emNOhCoVJp7
+R4X/RwSla9ZNjwWyt7s4c8LdsKF26QIjDkRWpDK5zEXkuhpXyt92hmcxkSTNJBKdYEZqN9g6bNUP
+fM+3igs0lpfZYgiYg9wELNFfq2iR6pGEcA8WWQ==
 </SignatureValue>
 <KeyInfo>
 <X509Data>
