@@ -43,12 +43,34 @@ body, html {
 	transform: translate(-50%, 0);
 	z-index: 2;
 	width: 80%;
-	padding: 20px;
 	text-align: center;
 	
 	bottom: 24px; 
 	display: none;
 }
+
+#bg-text ul 
+{
+	width: 100%;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    position: absolute;
+    top: 0;
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
+
+#bg-text ul li 
+ {
+     display:block;
+     float:left;
+   
+     width: 50px;
+ }
+
 .avarta_img {
     border-radius: 50%;
     margin-left: auto;
@@ -57,7 +79,7 @@ body, html {
 }
 
 #popup {
-	position: absolute;
+  position: absolute;
   transform: translate(-50%, 0);
   bottom: 24px;                   /* don't use top. Use bottom */
   left:50%;
@@ -66,6 +88,40 @@ body, html {
   background:red;
   display: none;
 }
+
+#slider-window
+{
+ width: 400px;
+ height: 100px;
+ border: 1px solid black;
+ overflow: hidden;
+ position: absolute;
+ left: 100px;
+}
+
+
+#slider-window ul 
+{
+    width: 600px;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    position: absolute;
+    top: 0;
+   
+ }
+
+ #slider-window ul li 
+ {
+     display:block;
+     float:left;
+   
+     width: 50px;
+ }
+
+
 </style>
 </head>
 <body>
@@ -73,13 +129,23 @@ body, html {
 	<div class="bg-image"></div>
 
 	<div id="bg-text">
-		<h2><font size="10">Welcome to Smart City work space</font></h2>
+
+		<div id="slider-window">
+			<ul id="slider-items">
+			 </ul>
+		</div>
+
+		<!-- <h2><font size="10">Welcome to Smart City work space</font></h2>
 		<h1 style="font-size: 80px" id="textbox">Have a nice day</h1>
 		<img style="display: 'none'; max-width:'30px'; height:'50px'" id="avarta" class="avarta_img" alt="Avatar">
-		<font size="9"><p id="submessage" style="display: 'none'"></p></font>
+		<font size="9"><p id="submessage" style="display: 'none'"></p></font> -->
 	</div>
 
 	<div id="popup">Popup ou yeah</div>
+	<div id="slider-window">
+		<ul id="slider-items">
+		 </ul>
+	</div>
 
 </body>
 </html>

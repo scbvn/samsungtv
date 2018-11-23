@@ -38,6 +38,8 @@ window.onload = function () {
 
     initMqtt();
 
+    AddItem();
+
     
 };
 
