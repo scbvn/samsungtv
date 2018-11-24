@@ -11,6 +11,9 @@ var imageMapping = {
 		"mr.sum": "images/members/sum/Sum.jpg",
 		"mr.trong": "images/members/trong/Trong.jpg",
 		"mr.tuan": "images/members/tuan/tuan.jpg",
+		"mr.binh": "images/members/binh/binh.jpg",
+		"mr.sonpham": "images/members/sonpham/SonPham.jpg",
+		"mr.son": "images/members/son/Son.jpg",
 		"stranger": "images/members/unknow/firework.png"
 }
 
@@ -32,13 +35,21 @@ window.onload = function () {
       });
       
       $( document.body ).click(function() {
-        showHidePopup();
-        
+        showPopup();
+        addNewPerson("tui ne", "images/members/sang/Sang.jpg");
+
     });
 
     initMqtt();
 
-    AddItem();
+    
+    //test
+    var avarta = document.querySelector('#avarta');
+      avarta.src = imageMapping["mr.sum"];
+	    avarta.style.display = 'block';
+
+
+    
 
     
 };
@@ -67,6 +78,7 @@ function hidePopup() {
     var $popup = $("#bg-text");
     $popup.slideUp();
   } 
+  loadIframe("iframe", "http://192.168.1.3:51200/#/dashboard");
 }
 
 function guid() {
@@ -115,7 +127,7 @@ function initMqtt() {
     // called when a message arrives
     function onMessageArrived(message) {
       //clear timeout
-      window.clearTimeout();
+		      window.clearTimeout();
 
       console.log("onMessageArrived:" + message.payloadString);
       
@@ -129,17 +141,26 @@ function initMqtt() {
       
       var avarta = document.querySelector('#avarta');
       avarta.src = imageMapping[visitor.toLowerCase()];
-	  avarta.style.display = 'block';
-	  
+      avarta.style.display = 'block';
+      	  
 	  var audio = new Audio('sounds/ding-dong.wav');
 	  audio.volume = 0.7;
     //audio.play();
-    window.setTimeout(showPopup, 500);
+    window.setTimeout(showPopup, 300);
 
     //set timeout to hide panel
     window.setTimeout(hidePopup, 20000);
+    
 
     }
+}
+
+function addNewPerson(name, image) {
+  var template = '<div class="img-with-text"> <h1 style="font-size: 30px; width: 100%; margin: 10px;" align="center" id="textbox">' + name + '</h1> <div class="container"><img style="display: "block"; width: "200px"; height: "200px"" id="avarta1" class="avarta_img" alt="Avatar" src="' + image + '"></div></div>';
+  var container = $('#list-container');
+  container.append(template);
+  console.log("add new person");
+  
 }
 
 function AddItem() {
@@ -151,6 +172,18 @@ function RemoveItem() {
   $('#slider-items li').first().remove();
   $('#slider-items').css('marginLeft', 0);
 }
+
+function loadIframe(iframeName, url) {
+    var $iframe = $('#' + iframeName);
+    if ( $iframe.length ) {
+        $iframe.attr('src',url);   
+        return false;
+    }
+    return true;
+	
+//	document.getElementsByName(iframeName)[0].src = site;
+}
+
 
 
 
