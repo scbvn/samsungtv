@@ -35,23 +35,11 @@ window.onload = function () {
       });
       
       $( document.body ).click(function() {
-        showPopup();
-        addNewPerson("tui ne", "images/members/sang/Sang.jpg");
-
+        //showPopup();
+        onMessageArrived("{payloadString:'Mr.Sum'}");
     });
 
     initMqtt();
-
-    
-    //test
-    var avarta = document.querySelector('#avarta');
-      avarta.src = imageMapping["mr.sum"];
-	    avarta.style.display = 'block';
-
-
-    
-
-    
 };
 
 function showHidePopup() {
@@ -65,15 +53,16 @@ function showHidePopup() {
   }
 }
 
-function showPopup() {
+function showPopup(action) {
   console.log("Show popup")
   if($("#bg-text").is(":hidden")) {
     var $popup = $("#bg-text");
-    $popup.slideDown();
+    $popup.slideDown("slow", action);
   }
 }
 
 function hidePopup() {
+  removeAllPersons();
   if(!$("#bg-text").is(":hidden")) {
     var $popup = $("#bg-text");
     $popup.slideUp();
@@ -104,55 +93,7 @@ function initMqtt() {
     // connect the client
     client.connect({onSuccess:onConnect});
     
-    var avarta = document.querySelector('#avarta');
-  	avarta.style.display = 'none';
-    
-  //called when the client connects
-    function onConnect() {
-      // Once a connection has been made, make a subscription and send a message.
-      console.log("onConnect");
-      var textboxTemp = document.querySelector('#textbox');
-      client.subscribe("test/detection");
-    }
-
-    // called when the client loses its connection
-    function onConnectionLost(responseObject) {
-      if (responseObject.errorCode !== 0) {
-        console.log("onConnectionLost:"+responseObject.errorMessage);
-        var box = document.querySelector('#textbox');
-        box.innerHTML = "Have a good journey";
-      }
-    }
-
-    // called when a message arrives
-    function onMessageArrived(message) {
-      //clear timeout
-		      window.clearTimeout();
-
-      console.log("onMessageArrived:" + message.payloadString);
-      
-      
-      var visitor = message.payloadString;
-      var box = document.querySelector('#textbox');
-      box.innerHTML = visitor;
-        
-      var subMessage = document.querySelector('#submessage');
-      subMessage.innerHTML = "Have a good journey";
-      
-      var avarta = document.querySelector('#avarta');
-      avarta.src = imageMapping[visitor.toLowerCase()];
-      avarta.style.display = 'block';
-      	  
-	  var audio = new Audio('sounds/ding-dong.wav');
-	  audio.volume = 0.7;
-    //audio.play();
-    window.setTimeout(showPopup, 300);
-
-    //set timeout to hide panel
-    window.setTimeout(hidePopup, 20000);
-    
-
-    }
+  
 }
 
 function addNewPerson(name, image) {
@@ -161,6 +102,11 @@ function addNewPerson(name, image) {
   container.append(template);
   console.log("add new person");
   
+}
+
+function removeAllPersons() {
+  var container = $('#list-container');
+  container.empty();
 }
 
 function AddItem() {
@@ -182,6 +128,47 @@ function loadIframe(iframeName, url) {
     return true;
 	
 //	document.getElementsByName(iframeName)[0].src = site;
+}
+
+//Mqtt
+//called when the client connects
+function onConnect() {
+  // Once a connection has been made, make a subscription and send a message.
+  console.log("onConnect");
+  var textboxTemp = document.querySelector('#textbox');
+  client.subscribe("test/detection");
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("onConnectionLost:"+responseObject.errorMessage);
+    var box = document.querySelector('#textbox');
+    box.innerHTML = "Have a good journey";
+  }
+}
+
+// called when a message arrives
+function onMessageArrived(message) {
+  //clear timeout
+  window.clearTimeout();
+
+  console.log("onMessageArrived:" + message.payloadString);
+  
+  
+  var visitor = message.payloadString;
+    
+  var subMessage = document.querySelector('#submessage');
+  subMessage.innerHTML = "Have a good journey";
+  
+var audio = new Audio('sounds/ding-dong.wav');
+audio.volume = 0.7;
+//audio.play();
+showPopup(addNewPerson(visitor, "images/members/sang/Sang.jpg"));
+
+window.setTimeout(hidePopup, 20000);
+
+
 }
 
 
