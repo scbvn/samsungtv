@@ -136,16 +136,31 @@ function onMessageArrived(message) {
   var visitor = message.payloadString;
 
   var subMessage = document.querySelector('#submessage');
-  subMessage.innerHTML = defaultWelcomeMessage;
+  var welcomeMessage = welcomeSays[Math.floor(Math.random() * welcomeSays.length)]
+  subMessage.innerHTML = welcomeMessage;
 
   var audio = new Audio(welcomeSound);
   audio.volume = 0.7;
-  //audio.play();
+  audio.onended = function () {
+    if ('speechSynthesis' in window) {
+      //sayIt(welcomeSays[Math.floor(Math.random() * welcomeSays.length)]);
+      sayIt(makeHelloSentence("Mr.Nam", welcomeMessage));
+    }
+  };
+  audio.play();
+
   showPopup(addNewPerson(visitor, "images/members/sang/Sang.jpg"));
   // showPopup(addNewPerson(visitor, imageMapping[visitor]));
 
-
   timerHandler = window.setTimeout(hidePopup, welcomePopupTimeout);
+}
+
+function sayIt(message) {
+  responsiveVoice.speak(message);
+}
+
+function makeHelloSentence(name, message) {
+  return getSessionHelloOfCurrentTime() + " " + name + "! " + message;
 }
 
 

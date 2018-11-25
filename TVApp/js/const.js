@@ -23,3 +23,18 @@ var defaultWelcomeMessage = "Have a good journey";
 var welcomeSound = "sounds/ding-dong.wav";
 
 var welcomePopupTimeout = 20000; //miliseconds
+
+var welcomeSays = [
+    "Have a good journey",
+    "Have a nice day",
+    "Today's going to be a great day! I can feel it!",
+    "Don't stop, never give up, hold your head high and reach the top!",
+    "I believe in you.",
+    "Have a safe day",
+    "Have a great day, but if you don't, that's okay too!",
+    "Enjoy your new day.",
+    "Ciao",
+    "Make it a good day!",
+    "Together, we shine!"
+];
+
