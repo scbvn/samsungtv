@@ -19,6 +19,7 @@ var imageMapping = {
 
 var itemCount = 0;
 var pixelsToScroll = "50px";
+var timerHandler;
 
 window.onload = function () {
     // TODO:: Do your initialization job
@@ -151,7 +152,9 @@ function onConnectionLost(responseObject) {
 // called when a message arrives
 function onMessageArrived(message) {
   //clear timeout
-  window.clearTimeout();
+  if(timerHandler) {
+    window.clearTimeout(timerHandler);
+  }
 
   console.log("onMessageArrived:" + message.payloadString);
   
@@ -166,7 +169,7 @@ audio.volume = 0.7;
 //audio.play();
 showPopup(addNewPerson(visitor, "images/members/sang/Sang.jpg"));
 
-window.setTimeout(hidePopup, 20000);
+timerHandler = window.setTimeout(hidePopup, 20000);
 
 
 }
