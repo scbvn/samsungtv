@@ -21,7 +21,7 @@ window.onload = function () {
 
   $(document.body).click(function () {
     //showPopup();
-    onMessageArrived("{payloadString:'Mr.Sum'}");
+    //onMessageArrived("{payloadString:'Mr.Sum'}");
   });
 
   initMqtt();
@@ -82,7 +82,7 @@ function initMqtt() {
 }
 
 function addNewPerson(name, image) {
-  var template = '<div class="img-with-text"> <h1 style="font-size: 30px; width: 100%; margin: 10px;" align="center" id="textbox">' + name + '</h1> <div class="container"><img style="display: "block"; width: "200px"; height: "200px"" id="avarta1" class="avarta_img" alt="Avatar" src="' + image + '"></div></div>';
+  var template = '<div class="img-with-text"> <h1 style="font-size: 40px; width: 100%; margin: 10px;" align="center" id="textbox">' + name + '</h1> <div class="container"><img style="display: "block"; width: "200px"; height: "200px"" id="avarta1" class="avarta_img" alt="Avatar" src="' + image + '"></div></div>';
   var container = $('#list-container');
   container.append(template);
   console.log("add new person");
@@ -144,13 +144,13 @@ function onMessageArrived(message) {
   audio.onended = function () {
     if ('speechSynthesis' in window) {
       //sayIt(welcomeSays[Math.floor(Math.random() * welcomeSays.length)]);
-      sayIt(makeHelloSentence("Mr.Nam", welcomeMessage));
+      sayIt(makeHelloSentence(visitor, welcomeMessage));
     }
   };
   audio.play();
 
-  showPopup(addNewPerson(visitor, "images/members/sang/Sang.jpg"));
-  // showPopup(addNewPerson(visitor, imageMapping[visitor]));
+  //showPopup(addNewPerson(visitor, "images/members/sang/Sang.jpg"));
+  showPopup(addNewPerson(visitor, imageMapping[visitor.toLowerCase()]));
 
   timerHandler = window.setTimeout(hidePopup, welcomePopupTimeout);
 }
